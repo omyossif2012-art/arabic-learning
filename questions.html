@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>اختبار قصة الرهان | منصة اللغة العربية</title>
+
+<title>اختبار اللغة العربية | مدرسة مربح</title>
 
 <style>
 @font-face {
@@ -17,100 +18,78 @@
 
 body {
     margin: 0;
-    min-height: 100vh;
-    font-family: "Sakkal Majalla", "Tahoma", sans-serif;
+    font-family: "Sakkal Majalla", Tahoma, Arial, sans-serif;
     background:
-        radial-gradient(circle at top right, rgba(198,166,91,.18), transparent 28%),
-        linear-gradient(135deg, #2a1715, #4b211f 48%, #241312);
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
+        radial-gradient(circle at top right, rgba(198,166,91,0.15), transparent 30%),
+        linear-gradient(135deg, #faf8f3, #f1e8ef);
+    color: #321d2a;
+    min-height: 100vh;
 }
 
 .container {
-    width: 100%;
-    max-width: 850px;
+    width: min(950px, 94%);
+    margin: 30px auto;
 }
 
 .header {
+    background: linear-gradient(135deg, #7a2837, #4d1d2a);
+    color: white;
+    border-radius: 22px;
+    padding: 25px;
     text-align: center;
-    margin-bottom: 18px;
+    box-shadow: 0 12px 30px rgba(80, 30, 45, 0.18);
+    border: 2px solid #c6a65b;
 }
 
-.header .school {
-    color: #f0d995;
-    font-size: 25px;
-    font-weight: bold;
+.header h1 {
+    margin: 0;
+    font-size: 36px;
 }
 
-.header .platform {
-    font-size: 19px;
-    opacity: .9;
-}
-
-.exam-card {
-    background: rgba(250,248,243,.97);
-    color: #351b19;
-    border-radius: 25px;
-    padding: 30px;
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.4),
-        0 0 0 1px rgba(240,217,149,.3);
-    position: relative;
-    overflow: hidden;
-}
-
-.exam-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 6px;
-    background: linear-gradient(
-        90deg,
-        #7a2837,
-        #c6a65b,
-        #7a2837
-    );
+.header p {
+    margin: 7px 0 0;
+    font-size: 20px;
 }
 
 .student-info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-    margin-bottom: 20px;
+    margin-top: 18px;
+    background: white;
+    border: 1px solid #d7c6a0;
+    border-radius: 18px;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
 }
 
-.info-item {
-    background: #f3ead6;
-    color: #4b211f;
-    border: 1px solid #d5bb79;
-    border-radius: 20px;
-    padding: 5px 16px;
-    font-size: 17px;
+.info-box {
+    background: #faf8f3;
+    border-right: 4px solid #c6a65b;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.info-box strong {
+    color: #7a2837;
 }
 
 .progress-area {
-    margin-bottom: 25px;
+    margin: 20px 0;
 }
 
 .progress-text {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    color: #6c3033;
     font-size: 18px;
     margin-bottom: 7px;
 }
 
 .progress-bar {
     width: 100%;
-    height: 10px;
-    background: #eadfca;
+    height: 12px;
+    background: #e7dfe2;
     border-radius: 20px;
     overflow: hidden;
 }
@@ -119,204 +98,148 @@ body {
     height: 100%;
     width: 0%;
     background: linear-gradient(90deg, #7a2837, #c6a65b);
-    border-radius: 20px;
-    transition: width .3s ease;
+    transition: width 0.3s ease;
+}
+
+.question-card {
+    background: white;
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+    border: 1px solid #dfd1b2;
 }
 
 .question-number {
     display: inline-block;
     background: #7a2837;
-    color: #fff;
-    padding: 6px 17px;
+    color: white;
+    padding: 6px 16px;
     border-radius: 20px;
     font-size: 18px;
-    margin-bottom: 14px;
+    margin-bottom: 15px;
 }
 
 .question {
     font-size: 27px;
     font-weight: bold;
-    line-height: 1.65;
+    line-height: 1.7;
     margin-bottom: 22px;
-    color: #351b19;
-}
-
-.options {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
 }
 
 .option {
-    position: relative;
-}
-
-.option input {
-    position: absolute;
-    opacity: 0;
-}
-
-.option label {
     display: block;
+    margin: 12px 0;
     padding: 14px 18px;
-    border: 2px solid #dfd0b5;
-    border-radius: 15px;
-    background: #fffdf9;
-    color: #41201e;
-    font-size: 21px;
+    background: #faf8f3;
+    border: 2px solid #e1d9d2;
+    border-radius: 14px;
     cursor: pointer;
-    transition: .2s ease;
+    transition: 0.2s;
+    font-size: 21px;
 }
 
-.option label:hover {
+.option:hover {
     border-color: #c6a65b;
-    background: #faf3e4;
     transform: translateY(-1px);
 }
 
-.option input:checked + label {
+.option.selected {
     border-color: #7a2837;
-    background: #f4e5df;
-    color: #681f2d;
-    box-shadow: 0 4px 12px rgba(122,40,55,.12);
+    background: #f4e8ec;
+}
+
+.option input {
+    margin-left: 10px;
+    accent-color: #7a2837;
 }
 
 .navigation {
     display: flex;
     justify-content: space-between;
     gap: 12px;
-    margin-top: 28px;
+    margin-top: 20px;
 }
 
 button {
     font-family: inherit;
     font-size: 20px;
     border: none;
-    border-radius: 14px;
-    padding: 10px 27px;
+    border-radius: 13px;
+    padding: 12px 28px;
     cursor: pointer;
-    transition: .2s ease;
 }
 
-.btn-prev {
-    background: #e7dcc7;
-    color: #4b211f;
+.prev-btn {
+    background: #eee7e9;
+    color: #4d1d2a;
 }
 
-.btn-next,
-.btn-finish {
-    background: linear-gradient(135deg, #7a2837, #561d28);
-    color: #fff;
-    box-shadow: 0 5px 15px rgba(86,29,40,.25);
-}
-
-button:hover {
-    transform: translateY(-2px);
+.next-btn,
+.finish-btn {
+    background: #7a2837;
+    color: white;
 }
 
 button:disabled {
-    opacity: .45;
+    opacity: 0.45;
     cursor: not-allowed;
-    transform: none;
 }
 
 .result {
+    display: none;
+    margin-top: 25px;
+    background: white;
+    border: 2px solid #c6a65b;
+    border-radius: 22px;
+    padding: 30px;
     text-align: center;
-    padding: 25px 10px;
 }
 
 .result h2 {
     color: #7a2837;
-    font-size: 34px;
-    margin-bottom: 10px;
+    font-size: 32px;
 }
 
 .score {
-    font-size: 48px;
-    color: #a37c26;
+    font-size: 45px;
     font-weight: bold;
+    color: #7a2837;
 }
 
-.result p {
-    font-size: 21px;
-}
-
-.warning-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(45,8,8,.96);
-    z-index: 99999;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
+.warning {
+    margin-top: 20px;
+    padding: 13px;
+    background: #fff7e6;
+    border: 1px solid #e2c878;
+    border-radius: 12px;
+    color: #624c16;
+    font-size: 17px;
     text-align: center;
 }
 
-.warning-box {
-    max-width: 600px;
-    width: 100%;
-    background: #fff8ed;
-    color: #3b1717;
-    border: 5px solid #9b2638;
-    border-radius: 25px;
-    padding: 35px 25px;
-    box-shadow: 0 0 50px rgba(255,0,0,.45);
-    animation: warningPulse .7s infinite alternate;
-}
-
-.warning-icon {
-    font-size: 65px;
-    margin-bottom: 5px;
-}
-
-.warning-box h2 {
-    color: #9b2638;
-    font-size: 36px;
-    margin: 5px 0 12px;
-}
-
-.warning-box p {
-    font-size: 23px;
-    line-height: 1.7;
-    margin: 8px 0;
-}
-
-.warning-box .small {
-    font-size: 18px;
-    color: #6a4b4b;
-}
-
-@keyframes warningPulse {
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: scale(1.025);
-    }
-}
-
-@media (max-width: 600px) {
-    body {
-        padding: 12px;
+@media (max-width: 650px) {
+    .student-info {
+        grid-template-columns: 1fr;
     }
 
-    .exam-card {
-        padding: 20px 15px;
-        border-radius: 20px;
+    .header h1 {
+        font-size: 29px;
     }
 
     .question {
         font-size: 23px;
     }
 
-    .option label {
+    .option {
         font-size: 19px;
     }
 
-    .navigation button {
-        padding: 9px 18px;
-        font-size: 18px;
+    .navigation {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
     }
 }
 </style>
@@ -327,78 +250,88 @@ button:disabled {
 <div class="container">
 
     <div class="header">
-        <div class="school">مدرسة مربح الحلقة الثانية بنات</div>
-        <div class="platform">منصة اللغة العربية • اختبار قصة «الرهان»</div>
+        <h1>اختبار اللغة العربية</h1>
+        <p>مدرسة مربح الحلقة الثانية بنات</p>
     </div>
 
-    <div class="exam-card">
-
-        <div id="studentInfo" class="student-info"></div>
-
-        <div id="examArea">
-
-            <div class="progress-area">
-                <div class="progress-text">
-                    <span id="progressText">السؤال 1 من 10</span>
-                    <span id="progressPercent">10%</span>
-                </div>
-
-                <div class="progress-bar">
-                    <div id="progressFill" class="progress-fill"></div>
-                </div>
-            </div>
-
-            <div id="questionNumber" class="question-number"></div>
-
-            <div id="questionText" class="question"></div>
-
-            <div id="options" class="options"></div>
-
-            <div class="navigation">
-                <button
-                    id="prevBtn"
-                    class="btn-prev"
-                    onclick="previousQuestion()">
-                    السابق
-                </button>
-
-                <button
-                    id="nextBtn"
-                    class="btn-next"
-                    onclick="nextQuestion()">
-                    التالي
-                </button>
-            </div>
-
+    <div class="student-info">
+        <div class="info-box">
+            👩🏻‍🎓 الطالبة:
+            <strong id="studentName">—</strong>
         </div>
 
-        <div id="resultArea" class="result" style="display:none;"></div>
+        <div class="info-box">
+            📚 الصف:
+            <strong id="studentGrade">—</strong>
+        </div>
+
+        <div class="info-box">
+            🏫 الشعبة:
+            <strong id="studentSection">—</strong>
+        </div>
+    </div>
+
+    <div class="warning">
+        ⚠️ احرصي على البقاء داخل صفحة الاختبار حتى الانتهاء وتسليم إجاباتك.
+    </div>
+
+    <div class="progress-area">
+        <div class="progress-text">
+            <span id="progressText">السؤال 1 من 10</span>
+            <span id="answeredText">تمت الإجابة: 0</span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+    <div class="question-card">
+
+        <div class="question-number" id="questionNumber">
+            السؤال 1
+        </div>
+
+        <div class="question" id="questionText"></div>
+
+        <div id="optionsContainer"></div>
 
     </div>
-</div>
 
+    <div class="navigation">
 
-<!-- شاشة الإنذار -->
-<div id="warningOverlay" class="warning-overlay">
+        <button
+            class="prev-btn"
+            id="prevBtn"
+            onclick="previousQuestion()">
+            ← السابق
+        </button>
 
-    <div class="warning-box">
+        <button
+            class="next-btn"
+            id="nextBtn"
+            onclick="nextQuestion()">
+            التالي →
+        </button>
 
-        <div class="warning-icon">🚨</div>
+        <button
+            class="finish-btn"
+            id="finishBtn"
+            onclick="finishExam()"
+            style="display:none;">
+            إنهاء الاختبار
+        </button>
 
-        <h2>تنبيه! تم رصد مغادرة الاختبار</h2>
+    </div>
 
-        <p>
-            تم رصد محاولة مغادرة صفحة الاختبار أثناء الإجابة.
-        </p>
+    <div class="result" id="resultBox">
+        <h2>🎉 أحسنتِ!</h2>
 
-        <p>
-            <strong>تم قفل الاختبار تلقائيًا.</strong>
-        </p>
+        <p>تم تسليم الاختبار بنجاح.</p>
 
-        <p class="small">
-            سيتم تحويلك إلى صفحة القفل...
-        </p>
+        <div class="score" id="scoreText"></div>
 
+        <p id="resultDetails"></p>
     </div>
 
 </div>
@@ -407,169 +340,25 @@ button:disabled {
 <script>
 
 /* =========================================================
-   بيانات الأسئلة
-========================================================= */
-
-const questions = [
-
-    {
-        question: "أين كان نعمان في بداية القصة؟",
-        options: [
-            "على الرصيف المحاذي للسوق",
-            "في منزله",
-            "في المستشفى",
-            "في المدرسة"
-        ],
-        correct: "a"
-    },
-
-    {
-        question: "ما المهنة التي كان يمارسها نعمان؟",
-        options: [
-            "تاجرًا",
-            "حمّالًا",
-            "طبيبًا",
-            "سائقًا"
-        ],
-        correct: "b"
-    },
-
-    {
-        question: "لماذا كان نعمان يواصل العمل رغم تقدمه في العمر؟",
-        options: [
-            "لأنه يحب السوق",
-            "لأنه يريد منافسة الشباب",
-            "لأنه كان يخشى أن ترى زوجته جائعة أو مهانة",
-            "لأنه كان يبحث عن الشهرة"
-        ],
-        correct: "c"
-    },
-
-    {
-        question: "ماذا قال طبيب الحكومة لنعمان؟",
-        options: [
-            "عليك أن ترتاح يا نعمان",
-            "زد ساعات عملك",
-            "اذهب إلى السوق كل يوم",
-            "احمل أوزانًا أكبر"
-        ],
-        correct: "a"
-    },
-
-    {
-        question: "لماذا شعر نعمان بوخزة التحدي عندما رأى الأكياس الثلاثة؟",
-        options: [
-            "لأنه أراد أن يثبت أنه ما زال قادرًا على حملها",
-            "لأنه كان يريد شراءها",
-            "لأنه لم يكن يعرف وزنها",
-            "لأنه أراد مساعدة صاحب الدكان فقط"
-        ],
-        correct: "a"
-    },
-
-    {
-        question: "من الشخص الذي كان يستطيع حمل الأكياس الثلاثة بحسب صاحب الدكان؟",
-        options: [
-            "نعمان",
-            "طبيب الحكومة",
-            "عاشور",
-            "صاحب الدكان"
-        ],
-        correct: "c"
-    },
-
-    {
-        question: "ماذا حدث عندما حاول عاشور حمل الأكياس الثلاثة؟",
-        options: [
-            "نجح في حملها بسهولة",
-            "طلب من نعمان مساعدته",
-            "حمل كيسين فقط",
-            "عجز عن حملها وقال: «لن أستطيع»"
-        ],
-        correct: "d"
-    },
-
-    {
-        question: "كم كان أجر نعمان مقابل حمل الأكياس ووضعها في السيارة؟",
-        options: [
-            "خمسة قروش",
-            "عشرة قروش",
-            "خمسة عشر قرشًا",
-            "درهم واحد"
-        ],
-        correct: "b"
-    },
-
-    {
-        question: "ماذا حدث لنعمان بعد أن حمل الأكياس ووضعها في السيارة؟",
-        options: [
-            "عاد إلى العمل فورًا",
-            "شعر بالدوخة وسار ببطء بعيدًا عن السوق",
-            "جلس مع صاحب الدكان",
-            "عاد لحمل أكياس أخرى"
-        ],
-        correct: "b"
-    },
-
-    {
-        question: "ما الدلالة الأبرز للرهان في القصة؟",
-        options: [
-            "إثبات أن الشباب أقوى من الكبار",
-            "إظهار أهمية المال في حياة الإنسان",
-            "الكشف عن صراع نعمان مع تقدّم العمر ومحاولته إثبات قوته",
-            "الدعوة إلى العمل في الأسواق"
-        ],
-        correct: "c"
-    }
-
-];
-
-
-/* =========================================================
-   المتغيرات
-========================================================= */
-
-let currentQuestion = parseInt(
-    sessionStorage.getItem("currentQuestion") || "0",
-    10
-);
-
-let userAnswers = JSON.parse(
-    sessionStorage.getItem("userAnswers") || "{}"
-);
-
-let examCompleted = false;
-let exitDetected = false;
-
-
-/* =========================================================
    بيانات الطالبة
 ========================================================= */
 
-const studentName = sessionStorage.getItem("studentName");
-const studentGrade = sessionStorage.getItem("studentGrade");
-const studentSection = sessionStorage.getItem("studentSection");
+const studentName =
+    sessionStorage.getItem("studentName") || "";
+
+const studentGrade =
+    sessionStorage.getItem("studentGrade") || "";
+
+const studentSection =
+    sessionStorage.getItem("studentSection") || "";
 
 
 /* =========================================================
-   التحقق من بيانات الطالبة
+   التأكد من تسجيل بيانات الطالبة
 ========================================================= */
 
-if (!studentName || !studentSection) {
-
-    window.location.replace("student.html");
-
-}
-
-
-/* =========================================================
-   التحقق من قفل الاختبار
-========================================================= */
-
-if (sessionStorage.getItem("murbahExamLocked") === "true") {
-
-    window.location.replace("locked.html");
-
+if (!studentName || !studentGrade || !studentSection) {
+    window.location.href = "student.html";
 }
 
 
@@ -577,11 +366,191 @@ if (sessionStorage.getItem("murbahExamLocked") === "true") {
    عرض بيانات الطالبة
 ========================================================= */
 
-document.getElementById("studentInfo").innerHTML = `
-    <div class="info-item">👩🏻‍🎓 ${studentName || ""}</div>
-    <div class="info-item">${studentGrade || "الصف السابع"}</div>
-    <div class="info-item">الشعبة ${studentSection || ""}</div>
-`;
+document.getElementById("studentName").textContent = studentName;
+document.getElementById("studentGrade").textContent = studentGrade;
+document.getElementById("studentSection").textContent = studentSection;
+
+
+/* =========================================================
+   نقطة الربط المستقبلية مع قاعدة البيانات
+=========================================================
+
+   في الخطوة التالية سنضع هنا رابط الخدمة التي ستستقبل
+   بيانات خروج الطالبات.
+
+   لا تغيّري شيئًا الآن.
+
+========================================================= */
+
+const LOG_ENDPOINT = "";
+
+
+/* =========================================================
+   أسئلة الاختبار
+========================================================= */
+
+const questions = [
+
+    {
+        question:
+        "ما العنصر الذي يساعد القارئ على معرفة الشخصيات الرئيسة في القصة؟",
+
+        options: [
+            "الشخصيات",
+            "العنوان فقط",
+            "عدد الفقرات",
+            "علامات الترقيم"
+        ],
+
+        answer: 0
+    },
+
+    {
+        question:
+        "عند تحليل شخصية في القصة، أيُّ دليل يُعد أكثر فائدة؟",
+
+        options: [
+            "تصرفاتها وأقوالها",
+            "عدد صفحات القصة",
+            "شكل الصفحة",
+            "نوع الخط"
+        ],
+
+        answer: 0
+    },
+
+    {
+        question:
+        "إذا واجهت الشخصية موقفًا صعبًا واتخذت قرارًا، فما الذي يمكن للقارئ استنتاجه؟",
+
+        options: [
+            "بعض صفاتها وطريقة تفكيرها",
+            "عدد الشخصيات فقط",
+            "مكان نشر القصة",
+            "عدد فصول الكتاب"
+        ],
+
+        answer: 0
+    },
+
+    {
+        question:
+        "ما العلاقة التي يمكن أن تربط بين حدث وحدث آخر في القصة؟",
+
+        options: [
+            "سبب ونتيجة",
+            "عنوان وصورة",
+            "خط ولون",
+            "فقرة وهامش"
+        ],
+
+        answer: 0
+    },
+
+    {
+        question:
+        "لماذا يهتم القارئ بترتيب الأحداث في القصة؟",
+
+        options: [
+            "لفهم تطور الأحداث وترابطها",
+            "لمعرفة عدد الكلمات",
+            "لمعرفة حجم الكتاب",
+            "لمعرفة نوع الخط"
+        ],
+
+        answer: 0
+    },
+
+    {
+        question:
+        "ماذا يكشف الحوار بين الشخصيات غالبًا؟",
+
+        options: [
+            "أفكار الشخصيات ومشاعرها ومواقفها",
+            "عدد صفحات القصة",
+            "اسم المؤلف فقط",
+            "حجم النص"
+        ],
+
+        answer: 0
+    },
+
+    {
+        question:
+        "عندما يتغير شعور الشخصية بسبب حدث وقع لها، فإن هذا التغير يساعدنا على فهم:",
+
+        options: [
+            "تطور الشخصية",
+            "شكل الكتاب",
+            "عدد الفقرات",
+            "نوع الورق"
+        ],
+
+        answer: 0
+    },
+
+    {
+        question:
+        "أي سؤال يساعد على الوصول إلى فكرة أعمق في القصة؟",
+
+        options: [
+            "ماذا نتعلم من تصرفات الشخصيات وأحداث القصة؟",
+            "كم عدد الكلمات؟",
+            "ما لون الغلاف؟",
+            "كم عدد الأسطر؟"
+        ],
+
+        answer: 0
+    },
+
+    {
+        question:
+        "عند الإجابة عن سؤال تحليلي حول القصة، ماذا ينبغي أن تقدم الطالبة؟",
+
+        options: [
+            "دليلًا من أحداث القصة",
+            "إجابة عشوائية",
+            "رأيًا بلا تفسير",
+            "معلومة من خارج القصة"
+        ],
+
+        answer: 0
+    },
+
+    {
+        question:
+        "ما الطريقة الأفضل لفهم موقف إحدى الشخصيات في القصة؟",
+
+        options: [
+            "ربط أقوالها وأفعالها بالأحداث",
+            "قراءة العنوان فقط",
+            "تجاهل الأحداث",
+            "الاعتماد على التخمين فقط"
+        ],
+
+        answer: 0
+    }
+
+];
+
+
+/* =========================================================
+   متغيرات الاختبار
+========================================================= */
+
+let currentQuestion = 0;
+
+let userAnswers =
+    JSON.parse(sessionStorage.getItem("userAnswers") || "{}");
+
+
+/* =========================================================
+   منع العودة لاختبار تم إقفاله
+========================================================= */
+
+if (sessionStorage.getItem("murbahExamLocked") === "true") {
+    window.location.href = "locked.html";
+}
 
 
 /* =========================================================
@@ -592,135 +561,102 @@ function showQuestion() {
 
     const q = questions[currentQuestion];
 
-    if (!q) return;
-
     document.getElementById("questionNumber").textContent =
-        `السؤال ${currentQuestion + 1}`;
+        "السؤال " + (currentQuestion + 1);
 
     document.getElementById("questionText").textContent =
         q.question;
 
     const optionsContainer =
-        document.getElementById("options");
+        document.getElementById("optionsContainer");
 
     optionsContainer.innerHTML = "";
 
-    const letters = ["a", "b", "c", "d"];
-
     q.options.forEach((option, index) => {
 
-        const letter = letters[index];
+        const label = document.createElement("label");
 
-        const div = document.createElement("div");
-        div.className = "option";
+        label.className = "option";
 
-        div.innerHTML = `
+        if (userAnswers[currentQuestion] === index) {
+            label.classList.add("selected");
+        }
+
+        label.innerHTML = `
             <input
                 type="radio"
                 name="answer"
-                id="option-${letter}"
-                value="${letter}"
-                ${userAnswers[currentQuestion] === letter ? "checked" : ""}
+                value="${index}"
+                ${userAnswers[currentQuestion] === index ? "checked" : ""}
             >
-
-            <label for="option-${letter}">
-                ${letter.toUpperCase()} ــ ${option}
-            </label>
+            ${option}
         `;
 
-        optionsContainer.appendChild(div);
+        label.addEventListener("click", function () {
 
-    });
+            userAnswers[currentQuestion] = index;
 
+            sessionStorage.setItem(
+                "userAnswers",
+                JSON.stringify(userAnswers)
+            );
 
-    /* حفظ الإجابة */
+            document
+                .querySelectorAll(".option")
+                .forEach(el => el.classList.remove("selected"));
 
-    document
-        .querySelectorAll('input[name="answer"]')
-        .forEach(input => {
+            label.classList.add("selected");
 
-            input.addEventListener("change", function() {
-
-                userAnswers[currentQuestion] = this.value;
-
-                sessionStorage.setItem(
-                    "userAnswers",
-                    JSON.stringify(userAnswers)
-                );
-
-            });
-
+            updateProgress();
         });
 
-
-    /* شريط التقدم */
-
-    const percent =
-        ((currentQuestion + 1) / questions.length) * 100;
-
-    document.getElementById("progressFill").style.width =
-        percent + "%";
-
-    document.getElementById("progressText").textContent =
-        `السؤال ${currentQuestion + 1} من ${questions.length}`;
-
-    document.getElementById("progressPercent").textContent =
-        Math.round(percent) + "%";
-
-
-    /* أزرار التنقل */
+        optionsContainer.appendChild(label);
+    });
 
     document.getElementById("prevBtn").disabled =
         currentQuestion === 0;
 
-    const nextBtn =
-        document.getElementById("nextBtn");
-
     if (currentQuestion === questions.length - 1) {
 
-        nextBtn.textContent = "إنهاء الاختبار";
-        nextBtn.className = "btn-finish";
+        document.getElementById("nextBtn").style.display = "none";
+
+        document.getElementById("finishBtn").style.display = "block";
 
     } else {
 
-        nextBtn.textContent = "التالي";
-        nextBtn.className = "btn-next";
+        document.getElementById("nextBtn").style.display = "block";
 
+        document.getElementById("finishBtn").style.display = "none";
     }
 
+    updateProgress();
 }
 
 
 /* =========================================================
-   السؤال التالي
+   تحديث شريط التقدم
 ========================================================= */
 
-function nextQuestion() {
+function updateProgress() {
 
-    if (!userAnswers[currentQuestion]) {
+    const answered =
+        Object.keys(userAnswers).length;
 
-        alert("يرجى اختيار إجابة أولًا.");
-        return;
+    const total =
+        questions.length;
 
-    }
+    const percentage =
+        ((currentQuestion + 1) / total) * 100;
 
-    if (currentQuestion < questions.length - 1) {
+    document.getElementById("progressFill").style.width =
+        percentage + "%";
 
-        currentQuestion++;
+    document.getElementById("progressText").textContent =
+        "السؤال " + (currentQuestion + 1) +
+        " من " + total;
 
-        sessionStorage.setItem(
-            "currentQuestion",
-            currentQuestion
-        );
-
-        showQuestion();
-
-    } else {
-
-        finishExam();
-
-    }
-
+    document.getElementById("answeredText").textContent =
+        "تمت الإجابة: " + answered;
 }
 
 
@@ -734,15 +670,42 @@ function previousQuestion() {
 
         currentQuestion--;
 
-        sessionStorage.setItem(
-            "currentQuestion",
-            currentQuestion
-        );
+        showQuestion();
+    }
+}
+
+
+/* =========================================================
+   السؤال التالي
+========================================================= */
+
+function nextQuestion() {
+
+    if (currentQuestion < questions.length - 1) {
+
+        currentQuestion++;
 
         showQuestion();
-
     }
+}
 
+
+/* =========================================================
+   حساب النتيجة
+========================================================= */
+
+function calculateScore() {
+
+    let score = 0;
+
+    questions.forEach((q, index) => {
+
+        if (userAnswers[index] === q.answer) {
+            score++;
+        }
+    });
+
+    return score;
 }
 
 
@@ -752,20 +715,28 @@ function previousQuestion() {
 
 function finishExam() {
 
-    if (examCompleted) return;
+    const answered =
+        Object.keys(userAnswers).length;
 
-    let score = 0;
+    if (answered < questions.length) {
 
-    questions.forEach((q, index) => {
+        const remaining =
+            questions.length - answered;
 
-        if (userAnswers[index] === q.correct) {
-            score++;
+        const confirmFinish =
+            confirm(
+                "لم تجيبي عن " +
+                remaining +
+                " سؤال/أسئلة.\n\nهل تريدين إنهاء الاختبار؟"
+            );
+
+        if (!confirmFinish) {
+            return;
         }
+    }
 
-    });
-
-
-    examCompleted = true;
+    const score =
+        calculateScore();
 
     sessionStorage.setItem(
         "examCompleted",
@@ -777,404 +748,220 @@ function finishExam() {
         score
     );
 
-    sessionStorage.removeItem("userAnswers");
+    /*
+       مهم:
+       عند الإنهاء الطبيعي لا نسجل خروجًا.
+    */
 
-    document.getElementById("examArea").style.display =
+    document.querySelector(".question-card").style.display =
         "none";
 
-    const resultArea =
-        document.getElementById("resultArea");
+    document.querySelector(".navigation").style.display =
+        "none";
 
-    resultArea.style.display = "block";
+    document.querySelector(".progress-area").style.display =
+        "none";
 
-    resultArea.innerHTML = `
-        <h2>أحسنتِ، تم إنهاء الاختبار 🌷</h2>
+    document.querySelector(".warning").style.display =
+        "none";
 
-        <div class="score">
-            ${score} / ${questions.length}
-        </div>
+    const resultBox =
+        document.getElementById("resultBox");
 
-        <p>
-            تم تسجيل نتيجتك بنجاح.
-        </p>
+    resultBox.style.display = "block";
 
-        <p>
-            <strong>
-                شكرًا لالتزامكِ ونزاهتكِ في أداء الاختبار.
-            </strong>
-        </p>
-    `;
+    document.getElementById("scoreText").textContent =
+        score + " / " + questions.length;
 
+    document.getElementById("resultDetails").textContent =
+        "الطالبة: " +
+        studentName +
+        " — " +
+        studentGrade +
+        " — " +
+        studentSection;
 }
 
 
 /* =========================================================
-   نظام الإنذار الصوتي
+   تسجيل خروج الطالبة
+=========================================================
+
+   هذه أهم إضافة في هذه المرحلة.
+
+   عندما تغادر الطالبة صفحة الاختبار، نقوم بتجهيز
+   سجل يحتوي على:
+
+   - اسم الطالبة
+   - الصف
+   - الشعبة
+   - وقت الخروج
+   - سبب الخروج
+
+   في الخطوة التالية سنربطه بمخزن بيانات مشترك
+   حتى يظهر لكِ في teacher.html.
+
 ========================================================= */
 
-let audioContext = null;
-let audioActivated = false;
+let exitAlreadyLogged = false;
 
+function createExitRecord(reason) {
 
-/*
-   تفعيل الصوت بعد أول تفاعل من الطالبة.
-   هذا مهم لأن المتصفحات تمنع تشغيل الصوت
-   تلقائيًا قبل تفاعل المستخدم.
-*/
-
-function activateAudio() {
-
-    if (audioActivated) return;
-
-    try {
-
-        const AudioContext =
-            window.AudioContext ||
-            window.webkitAudioContext;
-
-        if (!AudioContext) return;
-
-        audioContext = new AudioContext();
-
-        if (audioContext.state === "suspended") {
-            audioContext.resume();
-        }
-
-        audioActivated = true;
-
-    } catch (error) {
-
-        console.log("Audio activation failed:", error);
-
-    }
-
-}
-
-
-/*
-   تفعيل الصوت عند أول نقرة أو لمس أو ضغط لوحة مفاتيح.
-*/
-
-window.addEventListener(
-    "pointerdown",
-    activateAudio,
-    { once: true }
-);
-
-window.addEventListener(
-    "keydown",
-    activateAudio,
-    { once: true }
-);
-
-
-/* =========================================================
-   صوت الإنذار العالي
-========================================================= */
-
-function playAlarm() {
-
-    try {
-
-        const AudioContext =
-            window.AudioContext ||
-            window.webkitAudioContext;
-
-        if (!AudioContext) return;
-
-        if (!audioContext) {
-            audioContext = new AudioContext();
-        }
-
-        if (audioContext.state === "suspended") {
-            audioContext.resume();
-        }
-
-
-        const now = audioContext.currentTime;
-
-
-        /*
-           Gain قوي لكن ضمن نطاق معقول حتى لا يحدث
-           تشويه شديد للصوت.
-        */
-
-        const masterGain =
-            audioContext.createGain();
-
-        masterGain.gain.setValueAtTime(
-            0.0001,
-            now
-        );
-
-        masterGain.gain.linearRampToValueAtTime(
-            0.9,
-            now + 0.03
-        );
-
-        masterGain.connect(
-            audioContext.destination
-        );
-
-
-        /*
-           نمط إنذار متكرر عالي الوضوح.
-        */
-
-        const alarmTimes = [
-            0.00,
-            0.28,
-            0.56,
-            0.84,
-            1.12,
-            1.40,
-            1.68,
-            1.96,
-            2.24,
-            2.52,
-            2.80,
-            3.08
-        ];
-
-
-        alarmTimes.forEach((time, index) => {
-
-            const oscillator =
-                audioContext.createOscillator();
-
-            const gain =
-                audioContext.createGain();
-
-
-            /*
-               تغيير النغمة بين ترددين يجعل
-               الإنذار أكثر وضوحًا وإزعاجًا.
-            */
-
-            oscillator.frequency.value =
-                index % 2 === 0
-                    ? 1050
-                    : 720;
-
-            oscillator.type = "square";
-
-
-            const start =
-                now + time;
-
-            const end =
-                start + 0.20;
-
-
-            gain.gain.setValueAtTime(
-                0.0001,
-                start
-            );
-
-            gain.gain.linearRampToValueAtTime(
-                0.85,
-                start + 0.025
-            );
-
-            gain.gain.setValueAtTime(
-                0.85,
-                end - 0.035
-            );
-
-            gain.gain.linearRampToValueAtTime(
-                0.0001,
-                end
-            );
-
-
-            oscillator.connect(gain);
-            gain.connect(masterGain);
-
-
-            oscillator.start(start);
-            oscillator.stop(end + 0.02);
-
-        });
-
-
-        /*
-           إغلاق تدريجي للصوت في النهاية.
-        */
-
-        masterGain.gain.setValueAtTime(
-            0.9,
-            now + 3.25
-        );
-
-        masterGain.gain.linearRampToValueAtTime(
-            0.0001,
-            now + 3.45
-        );
-
-    } catch (error) {
-
-        console.log("Alarm failed:", error);
-
-    }
-
-}
-
-
-/* =========================================================
-   قفل الاختبار
-========================================================= */
-
-function lockExam(reason) {
-
-    if (exitDetected || examCompleted) {
+    if (exitAlreadyLogged) {
         return;
     }
 
-    exitDetected = true;
+    /*
+       إذا كانت الطالبة أنهت الاختبار بصورة طبيعية
+       فلا نعتبر ذلك خروجًا.
+    */
+
+    if (sessionStorage.getItem("examCompleted") === "true") {
+        return;
+    }
+
+    exitAlreadyLogged = true;
+
+    const exitRecord = {
+
+        studentName: studentName,
+
+        grade: studentGrade,
+
+        section: studentSection,
+
+        exitTime: new Date().toISOString(),
+
+        reason: reason,
+
+        page: "questions.html"
+
+    };
 
 
-    /* تسجيل سبب القفل */
+    /*
+       حفظ نسخة محلية احتياطية.
+       ستفيدنا أثناء التجربة قبل الربط الخارجي.
+    */
 
     sessionStorage.setItem(
-        "murbahExamLocked",
-        "true"
-    );
-
-    sessionStorage.setItem(
-        "lockReason",
-        reason || "تم رصد مغادرة صفحة الاختبار"
+        "lastExitRecord",
+        JSON.stringify(exitRecord)
     );
 
 
     /*
-       تشغيل الإنذار أولًا.
+       إذا أصبح لدينا رابط الخدمة الخارجية
+       في الخطوة التالية، سيتم إرسال السجل إليه.
     */
 
-    playAlarm();
+    if (LOG_ENDPOINT) {
 
+        try {
 
-    /*
-       إظهار شاشة التحذير.
-    */
+            navigator.sendBeacon(
+                LOG_ENDPOINT,
+                JSON.stringify(exitRecord)
+            );
 
-    const overlay =
-        document.getElementById("warningOverlay");
+        } catch (error) {
 
-    overlay.style.display = "flex";
-
-
-    /*
-       تحويل الطالبة إلى صفحة القفل.
-    */
-
-    setTimeout(() => {
-
-        window.location.replace("locked.html");
-
-    }, 900);
-
+            console.log(
+                "تعذر إرسال سجل الخروج:",
+                error
+            );
+        }
+    }
 }
 
 
 /* =========================================================
-   منع الرجوع للخلف
-========================================================= */
-
-history.pushState(
-    null,
-    "",
-    window.location.href
-);
-
-window.addEventListener(
-    "popstate",
-    function() {
-
-        lockExam("محاولة استخدام زر الرجوع");
-
-    }
-);
-
-
-/* =========================================================
-   رصد مغادرة التبويب
+   اكتشاف مغادرة صفحة الاختبار
 ========================================================= */
 
 document.addEventListener(
     "visibilitychange",
-    function() {
+    function () {
 
-        if (
-            document.visibilityState === "hidden" &&
-            !examCompleted &&
-            !exitDetected
-        ) {
+        if (document.visibilityState === "hidden") {
 
-            lockExam("مغادرة صفحة الاختبار أو الانتقال إلى تبويب آخر");
+            createExitRecord(
+                "غادرت الطالبة صفحة الاختبار"
+            );
 
+            sessionStorage.setItem(
+                "murbahExamLocked",
+                "true"
+            );
+
+            sessionStorage.setItem(
+                "lockReason",
+                "تم رصد مغادرة صفحة الاختبار."
+            );
         }
-
     }
 );
 
 
 /* =========================================================
-   محاولة مغادرة الصفحة
+   زر الرجوع في المتصفح
+========================================================= */
+
+history.pushState(null, "", location.href);
+
+window.addEventListener(
+    "popstate",
+    function () {
+
+        createExitRecord(
+            "استخدام زر الرجوع في المتصفح"
+        );
+
+        sessionStorage.setItem(
+            "murbahExamLocked",
+            "true"
+        );
+
+        sessionStorage.setItem(
+            "lockReason",
+            "تم رصد محاولة مغادرة الاختبار باستخدام زر الرجوع."
+        );
+
+        window.location.href = "locked.html";
+    }
+);
+
+
+/* =========================================================
+   محاولة إغلاق الصفحة أو الانتقال منها
 ========================================================= */
 
 window.addEventListener(
     "beforeunload",
-    function(event) {
+    function (event) {
 
         if (
-            !examCompleted &&
-            !exitDetected
+            sessionStorage.getItem("examCompleted") !== "true"
         ) {
+
+            createExitRecord(
+                "محاولة إغلاق صفحة الاختبار أو مغادرتها"
+            );
+
+            sessionStorage.setItem(
+                "murbahExamLocked",
+                "true"
+            );
+
+            sessionStorage.setItem(
+                "lockReason",
+                "تم رصد مغادرة صفحة الاختبار."
+            );
 
             event.preventDefault();
 
             event.returnValue = "";
-
         }
-
-    }
-);
-
-
-/* =========================================================
-   منع بعض اختصارات الخروج
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        /*
-           Ctrl + W
-           Ctrl + R
-           F5
-        */
-
-        if (
-            event.ctrlKey &&
-            (event.key === "w" || event.key === "r")
-        ) {
-
-            event.preventDefault();
-
-            lockExam("محاولة إغلاق أو إعادة تحميل صفحة الاختبار");
-
-        }
-
-
-        if (event.key === "F5") {
-
-            event.preventDefault();
-
-            lockExam("محاولة إعادة تحميل صفحة الاختبار");
-
-        }
-
     }
 );
 

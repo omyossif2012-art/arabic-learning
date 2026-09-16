@@ -1,1 +1,275 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>بيانات الطالبة | منصة اللغة العربية</title>
+
+<style>
+@font-face {
+    font-family: "Sakkal Majalla";
+    src: local("Sakkal Majalla");
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Sakkal Majalla", "Tahoma", sans-serif;
+    background:
+        radial-gradient(circle at top right, rgba(198,166,91,.15), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(122,40,55,.18), transparent 35%),
+        linear-gradient(135deg, #241814, #3b201e 55%, #241814);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+.container {
+    width: 100%;
+    max-width: 620px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 38px;
+    color: #f0d995;
+}
+
+.header p {
+    margin: 5px 0;
+    font-size: 22px;
+    color: #fff;
+}
+
+.motto {
+    font-size: 18px !important;
+    color: #d9c79b !important;
+}
+
+.card {
+    background: rgba(250,248,243,.97);
+    color: #2b1b17;
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 20px 55px rgba(0,0,0,.35);
+    border: 1px solid rgba(240,217,149,.5);
+}
+
+.card-title {
+    text-align: center;
+    color: #7a2837;
+    font-size: 32px;
+    margin: 0 0 25px;
+}
+
+.field {
+    margin-bottom: 22px;
+}
+
+label {
+    display: block;
+    font-size: 22px;
+    color: #4b2a24;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 2px solid #d8c89c;
+    background: #fff;
+    color: #2b1b17;
+    font-family: inherit;
+    font-size: 20px;
+    outline: none;
+    transition: .2s;
+}
+
+input:focus,
+select:focus {
+    border-color: #7a2837;
+    box-shadow: 0 0 0 3px rgba(122,40,55,.10);
+}
+
+input::placeholder {
+    color: #999;
+}
+
+.note {
+    background: #f5efe3;
+    border-right: 5px solid #c6a65b;
+    padding: 12px 15px;
+    border-radius: 10px;
+    font-size: 18px;
+    color: #5a4038;
+    margin-bottom: 25px;
+}
+
+button {
+    width: 100%;
+    border: none;
+    padding: 16px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #7a2837, #57202b);
+    color: white;
+    font-family: inherit;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(87,32,43,.25);
+    transition: .2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(87,32,43,.35);
+}
+
+.error {
+    display: none;
+    color: #a32121;
+    background: #fbeaea;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #d8c89c;
+    font-size: 17px;
+}
+
+@media (max-width: 600px) {
+    .card {
+        padding: 25px 20px;
+    }
+
+    .header h1 {
+        font-size: 32px;
+    }
+
+    .header p {
+        font-size: 20px;
+    }
+
+    .card-title {
+        font-size: 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>منصة اللغة العربية</h1>
+        <p>مدرسة مربح الحلقة الثانية بنات</p>
+        <p class="motto">بِالْمِيثَاقِ نَبْلُغُ الْآفَاقَ</p>
+    </div>
+
+    <div class="card">
+
+        <h2 class="card-title">بيانات الطالبة</h2>
+
+        <div class="note">
+            🌷 عزيزتي الطالبة، يرجى إدخال بياناتك بدقة قبل الانتقال إلى الاختبار.
+        </div>
+
+        <div id="error" class="error">
+            يرجى إكمال جميع البيانات المطلوبة.
+        </div>
+
+        <div class="field">
+            <label for="studentName">اسم الطالبة</label>
+            <input
+                type="text"
+                id="studentName"
+                placeholder="اكتبي اسمك الثلاثي"
+                autocomplete="off"
+            >
+        </div>
+
+        <div class="field">
+            <label for="grade">الصف</label>
+            <input
+                type="text"
+                id="grade"
+                value="الصف السابع"
+                readonly
+            >
+        </div>
+
+        <div class="field">
+            <label for="classSection">الشعبة</label>
+            <select id="classSection">
+                <option value="">اختاري الشعبة</option>
+                <option value="7/أ">7/أ</option>
+                <option value="7/ب">7/ب</option>
+                <option value="7/ج">7/ج</option>
+                <option value="7/د">7/د</option>
+                <option value="7/هـ">7/هـ</option>
+                <option value="7/و">7/و</option>
+            </select>
+        </div>
+
+        <button onclick="startExam()">
+            ابدئي الاختبار ←
+        </button>
+
+    </div>
+
+    <div class="footer">
+        تمنياتنا لكِ بالتوفيق والتميّز 🌷
+    </div>
+
+</div>
+
+<script>
+
+function startExam() {
+
+    const name = document.getElementById("studentName").value.trim();
+    const grade = document.getElementById("grade").value;
+    const section = document.getElementById("classSection").value;
+    const error = document.getElementById("error");
+
+    if (!name || !section) {
+        error.style.display = "block";
+        return;
+    }
+
+    error.style.display = "none";
+
+    // حفظ بيانات الطالبة مؤقتًا
+    sessionStorage.setItem("studentName", name);
+    sessionStorage.setItem("studentGrade", grade);
+    sessionStorage.setItem("studentSection", section);
+
+    // الانتقال إلى الاختبار
+    window.location.href = "questions.html";
+}
+
+</script>
+
+</body>
+</html>

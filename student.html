@@ -20,10 +20,12 @@ body {
     margin: 0;
     min-height: 100vh;
     font-family: "Sakkal Majalla", "Tahoma", sans-serif;
+
     background:
         radial-gradient(circle at top right, rgba(198,166,91,.15), transparent 35%),
         radial-gradient(circle at bottom left, rgba(122,40,55,.18), transparent 35%),
         linear-gradient(135deg, #241814, #3b201e 55%, #241814);
+
     color: #fff;
     display: flex;
     align-items: center;
@@ -125,11 +127,14 @@ button {
     border: none;
     padding: 16px;
     border-radius: 14px;
+
     background: linear-gradient(135deg, #7a2837, #57202b);
+
     color: white;
     font-family: inherit;
     font-size: 24px;
     cursor: pointer;
+
     box-shadow: 0 8px 20px rgba(87,32,43,.25);
     transition: .2s;
 }
@@ -137,6 +142,10 @@ button {
 button:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 25px rgba(87,32,43,.35);
+}
+
+button:active {
+    transform: translateY(0);
 }
 
 .error {
@@ -158,6 +167,11 @@ button:hover {
 }
 
 @media (max-width: 600px) {
+
+    body {
+        padding: 18px;
+    }
+
     .card {
         padding: 25px 20px;
     }
@@ -173,6 +187,15 @@ button:hover {
     .card-title {
         font-size: 28px;
     }
+
+    label {
+        font-size: 20px;
+    }
+
+    input,
+    select {
+        font-size: 19px;
+    }
 }
 </style>
 </head>
@@ -182,61 +205,97 @@ button:hover {
 <div class="container">
 
     <div class="header">
+
         <h1>منصة اللغة العربية</h1>
+
         <p>مدرسة مربح الحلقة الثانية بنات</p>
-        <p class="motto">بِالْمِيثَاقِ نَبْلُغُ الْآفَاقَ</p>
+
+        <p class="motto">
+            بِالْمِيثَاقِ نَبْلُغُ الْآفَاقَ
+        </p>
+
     </div>
+
 
     <div class="card">
 
-        <h2 class="card-title">بيانات الطالبة</h2>
+        <h2 class="card-title">
+            بيانات الطالبة
+        </h2>
+
 
         <div class="note">
             🌷 عزيزتي الطالبة، يرجى إدخال بياناتك بدقة قبل الانتقال إلى الاختبار.
         </div>
 
+
         <div id="error" class="error">
             يرجى إكمال جميع البيانات المطلوبة.
         </div>
 
+
         <div class="field">
-            <label for="studentName">اسم الطالبة</label>
+
+            <label for="studentName">
+                اسم الطالبة
+            </label>
+
             <input
                 type="text"
                 id="studentName"
                 placeholder="اكتبي اسمك الثلاثي"
                 autocomplete="off"
             >
+
         </div>
 
+
         <div class="field">
-            <label for="grade">الصف</label>
+
+            <label for="grade">
+                الصف
+            </label>
+
             <input
                 type="text"
                 id="grade"
                 value="الصف السابع"
                 readonly
             >
+
         </div>
 
+
         <div class="field">
-            <label for="classSection">الشعبة</label>
+
+            <label for="classSection">
+                الشعبة
+            </label>
+
             <select id="classSection">
-                <option value="">اختاري الشعبة</option>
+
+                <option value="">
+                    اختاري الشعبة
+                </option>
+
                 <option value="7/أ">7/أ</option>
                 <option value="7/ب">7/ب</option>
                 <option value="7/ج">7/ج</option>
                 <option value="7/د">7/د</option>
                 <option value="7/هـ">7/هـ</option>
                 <option value="7/و">7/و</option>
+
             </select>
+
         </div>
 
-        <button onclick="startExam()">
+
+        <button type="button" onclick="startExam()">
             ابدئي الاختبار ←
         </button>
 
     </div>
+
 
     <div class="footer">
         تمنياتنا لكِ بالتوفيق والتميّز 🌷
@@ -244,28 +303,66 @@ button:hover {
 
 </div>
 
+
 <script>
 
 function startExam() {
 
-    const name = document.getElementById("studentName").value.trim();
-    const grade = document.getElementById("grade").value;
-    const section = document.getElementById("classSection").value;
-    const error = document.getElementById("error");
+    const name =
+        document.getElementById("studentName").value.trim();
 
+    const grade =
+        document.getElementById("grade").value;
+
+    const section =
+        document.getElementById("classSection").value;
+
+    const error =
+        document.getElementById("error");
+
+
+    // التحقق من البيانات
     if (!name || !section) {
+
         error.style.display = "block";
+
         return;
     }
 
+
     error.style.display = "none";
 
-    // حفظ بيانات الطالبة مؤقتًا
-    sessionStorage.setItem("studentName", name);
-    sessionStorage.setItem("studentGrade", grade);
-    sessionStorage.setItem("studentSection", section);
 
-    // الانتقال إلى الاختبار
+    /*
+      بدء محاولة جديدة:
+      نمسح بيانات الاختبار السابقة حتى لا
+      تختلط المحاولة الحالية بالسابقة.
+    */
+
+    sessionStorage.removeItem("userAnswers");
+    sessionStorage.removeItem("examScore");
+    sessionStorage.removeItem("currentQuestion");
+    sessionStorage.removeItem("murbahExamLocked");
+
+
+    // حفظ بيانات الطالبة
+    sessionStorage.setItem("studentName", name);
+
+    sessionStorage.setItem(
+        "studentGrade",
+        grade
+    );
+
+    sessionStorage.setItem(
+        "studentSection",
+        section
+    );
+
+
+    /*
+      الانتقال المباشر إلى صفحة الأسئلة
+    */
+
     window.location.href = "questions.html";
 }
 

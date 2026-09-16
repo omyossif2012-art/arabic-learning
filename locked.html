@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 
 <meta charset="UTF-8">
@@ -8,6 +9,7 @@
       content="width=device-width, initial-scale=1.0">
 
 <title>تم قفل الاختبار | مدرسة مربح</title>
+
 
 <style>
 
@@ -39,10 +41,17 @@ body {
         sans-serif;
 
     background:
+
         radial-gradient(
             circle at top right,
             rgba(198,166,91,.18),
             transparent 30%
+        ),
+
+        radial-gradient(
+            circle at bottom left,
+            rgba(122,40,55,.18),
+            transparent 35%
         ),
 
         linear-gradient(
@@ -53,6 +62,8 @@ body {
         );
 
     color: white;
+
+    padding: 25px;
 
 }
 
@@ -78,11 +89,12 @@ body {
 
     color: #f0d995;
 
-    font-size: clamp(
-        22px,
-        4vw,
-        30px
-    );
+    font-size:
+        clamp(
+            22px,
+            4vw,
+            30px
+        );
 
     font-weight: bold;
 
@@ -165,6 +177,7 @@ body {
     border-radius: 50%;
 
     background:
+
         linear-gradient(
             135deg,
             #7a2837,
@@ -174,6 +187,7 @@ body {
     font-size: 58px;
 
     box-shadow:
+
         0 10px 30px
         rgba(122,40,55,.3);
 
@@ -208,7 +222,7 @@ h1 {
 
 
 /* ==============================
-   النص
+   الرسالة الرئيسية
 ============================== */
 
 .main-message {
@@ -228,6 +242,11 @@ h1 {
         10px;
 
 }
+
+
+/* ==============================
+   التنبيه
+============================== */
 
 .warning {
 
@@ -260,11 +279,17 @@ h1 {
 
 .student {
 
-    margin-top: 20px;
+    margin-top: 15px;
 
-    font-size: 18px;
+    font-size: 19px;
 
     color: #765f4e;
+
+}
+
+.student strong {
+
+    color: #571f2d;
 
 }
 
@@ -293,9 +318,24 @@ h1 {
 
     text-decoration: none;
 
-    font-size: 19px;
+    font-size: 20px;
 
     font-weight: bold;
+
+    transition: .2s;
+
+}
+
+.home-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        #c6a65b;
+
+    color:
+        #321d18;
 
 }
 
@@ -319,6 +359,7 @@ h1 {
     }
 
 }
+
 
 @keyframes cardAppear {
 
@@ -350,6 +391,10 @@ h1 {
 ============================== */
 
 @media (max-width: 600px) {
+
+    body {
+        padding: 18px;
+    }
 
     .lock-card {
 
@@ -384,13 +429,14 @@ h1 {
 <div class="container">
 
 
-    <!-- الهوية -->
+    <!-- ================= الهوية ================= -->
 
     <div class="school-name">
 
         مدرسة مربح الحلقة الثانية بنات
 
     </div>
+
 
     <div class="motto">
 
@@ -399,7 +445,7 @@ h1 {
     </div>
 
 
-    <!-- بطاقة القفل -->
+    <!-- ================= بطاقة القفل ================= -->
 
     <div class="lock-card">
 
@@ -434,6 +480,8 @@ h1 {
         </div>
 
 
+        <!-- ================= بيانات الطالبة ================= -->
+
         <div class="student">
 
             الطالبة:
@@ -464,8 +512,10 @@ h1 {
         </div>
 
 
+        <!-- ================= العودة ================= -->
+
         <a
-            href="home.html"
+            href="index.html"
             class="home-btn">
 
             🏠 العودة إلى المنصة
@@ -510,7 +560,17 @@ document.getElementById(
 
 
 /* =========================================
-   منع الرجوع للاختبار
+   تثبيت حالة القفل
+========================================= */
+
+sessionStorage.setItem(
+    "murbahExamLocked",
+    "true"
+);
+
+
+/* =========================================
+   منع الرجوع
 ========================================= */
 
 history.pushState(
@@ -535,12 +595,24 @@ window.addEventListener(
 
 
 /* =========================================
-   منع فتح الاختبار مرة أخرى
+   منع العودة للصفحة السابقة
 ========================================= */
 
-sessionStorage.setItem(
-    "murbahExamLocked",
-    "true"
+window.addEventListener(
+    "pageshow",
+    function(event) {
+
+        if (event.persisted) {
+
+            history.pushState(
+                null,
+                "",
+                location.href
+            );
+
+        }
+
+    }
 );
 
 </script>

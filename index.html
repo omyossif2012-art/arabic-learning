@@ -1,1 +1,427 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>منصة اللغة العربية</title>
+
+    <style>
+        @font-face {
+            font-family: "Sakkal Majalla";
+            src: local("Sakkal Majalla");
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Sakkal Majalla", "Tahoma", sans-serif;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(198,166,91,0.18), transparent 25%),
+                radial-gradient(circle at 85% 80%, rgba(122,40,55,0.18), transparent 30%),
+                linear-gradient(135deg, #241815, #4b2528 55%, #201614);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* زخارف الخلفية */
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.12;
+        }
+
+        body::before {
+            width: 320px;
+            height: 320px;
+            border: 1px solid #f0d995;
+            top: -100px;
+            left: -100px;
+        }
+
+        body::after {
+            width: 450px;
+            height: 450px;
+            border: 1px solid #f0d995;
+            bottom: -220px;
+            right: -150px;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* الشريط العلوي */
+        header {
+            padding: 22px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(240,217,149,0.25);
+            background: rgba(20, 12, 10, 0.35);
+            backdrop-filter: blur(8px);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-icon {
+            width: 52px;
+            height: 52px;
+            border: 1px solid #c6a65b;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f0d995;
+            font-size: 28px;
+            background: rgba(198,166,91,0.08);
+        }
+
+        .brand-text h2 {
+            font-size: 25px;
+            color: #f0d995;
+            font-weight: normal;
+        }
+
+        .brand-text p {
+            font-size: 16px;
+            color: #eadfce;
+        }
+
+        .arabic-label {
+            color: #f0d995;
+            font-size: 20px;
+        }
+
+        /* المحتوى الرئيسي */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+
+        .hero {
+            width: min(900px, 94%);
+            text-align: center;
+            padding: 55px 35px;
+            border: 1px solid rgba(240,217,149,0.35);
+            border-radius: 30px;
+            background: rgba(255,255,255,0.055);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+            backdrop-filter: blur(12px);
+            animation: appear 1.2s ease;
+        }
+
+        .ornament {
+            color: #f0d995;
+            font-size: 30px;
+            margin-bottom: 18px;
+            letter-spacing: 8px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 72px);
+            font-weight: normal;
+            line-height: 1.1;
+            color: #f0d995;
+            margin-bottom: 15px;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(23px, 3vw, 31px);
+            color: #fff;
+            margin-bottom: 22px;
+        }
+
+        .hero .description {
+            max-width: 650px;
+            margin: 0 auto 35px;
+            font-size: 21px;
+            line-height: 1.8;
+            color: #e9ded2;
+        }
+
+        /* بطاقة التعليمات */
+        .info-box {
+            max-width: 650px;
+            margin: 0 auto 35px;
+            padding: 20px 25px;
+            border-right: 4px solid #c6a65b;
+            background: rgba(0,0,0,0.18);
+            border-radius: 12px;
+            text-align: right;
+        }
+
+        .info-box h3 {
+            color: #f0d995;
+            font-size: 23px;
+            font-weight: normal;
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+            color: #eee3d7;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        /* الزر */
+        .start-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            min-width: 240px;
+            padding: 15px 35px;
+            border: 1px solid #f0d995;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #c6a65b, #e0c77d);
+            color: #301d19;
+            font-family: inherit;
+            font-size: 23px;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(198,166,91,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(198,166,91,0.35);
+        }
+
+        .start-btn:active {
+            transform: translateY(0);
+        }
+
+        .arrow {
+            font-size: 25px;
+        }
+
+        /* التذييل */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #cfc1b3;
+            font-size: 16px;
+            border-top: 1px solid rgba(240,217,149,0.18);
+            background: rgba(0,0,0,0.15);
+        }
+
+        footer strong {
+            color: #f0d995;
+            font-weight: normal;
+        }
+
+        /* الحركة */
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* الجوال */
+        @media (max-width: 600px) {
+
+            header {
+                padding: 18px 20px;
+            }
+
+            .brand-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 24px;
+            }
+
+            .brand-text h2 {
+                font-size: 21px;
+            }
+
+            .brand-text p {
+                font-size: 14px;
+            }
+
+            .arabic-label {
+                display: none;
+            }
+
+            main {
+                padding: 35px 15px;
+            }
+
+            .hero {
+                padding: 40px 20px;
+                border-radius: 22px;
+            }
+
+            .hero h1 {
+                font-size: 47px;
+            }
+
+            .hero .subtitle {
+                font-size: 25px;
+            }
+
+            .hero .description {
+                font-size: 18px;
+            }
+
+            .info-box {
+                padding: 17px;
+            }
+
+            .info-box h3 {
+                font-size: 21px;
+            }
+
+            .info-box p {
+                font-size: 17px;
+            }
+
+            .start-btn {
+                width: 100%;
+                min-width: 0;
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- رأس الصفحة -->
+    <header>
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                ع
+            </div>
+
+            <div class="brand-text">
+                <h2>منصة اللغة العربية</h2>
+                <p>تعلم • تفاعل • أبدع</p>
+            </div>
+
+        </div>
+
+        <div class="arabic-label">
+            لغتي هويتي
+        </div>
+
+    </header>
+
+
+    <!-- المحتوى الرئيسي -->
+    <main>
+
+        <section class="hero">
+
+            <div class="ornament">
+                ✦ ✧ ✦
+            </div>
+
+            <h1>
+                مَرْحَبًا بِكِ
+            </h1>
+
+            <div class="subtitle">
+                في عالم اللغة العربية
+            </div>
+
+            <p class="description">
+                هنا تبدأ رحلة جديدة لاكتشاف جمال لغتنا العربية،
+                وفهم النصوص، وتحليل الأفكار، وإظهار مهاراتك
+                بطريقة تفاعلية ممتعة.
+            </p>
+
+
+            <div class="info-box">
+
+                <h3>
+                    📖 قبل أن تبدئي
+                </h3>
+
+                <p>
+                    أجيبي عن الأسئلة بهدوء وتركيز، واقرئي كل سؤال
+                    جيدًا قبل اختيار الإجابة المناسبة.
+                    تمنياتنا لكِ بالتوفيق والتميّز.
+                </p>
+
+            </div>
+
+
+            <!-- زر بدء الاختبار -->
+            <a href="questions.html" class="start-btn">
+                <span>ابدئي الاختبار</span>
+                <span class="arrow">←</span>
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- التذييل -->
+    <footer>
+
+        <strong>منصة اللغة العربية</strong>
+        <br>
+
+        بالعلم والمعرفة نرتقي بلغتنا وهويتنا
+
+    </footer>
+
+</div>
+
+
+<script>
+
+    /*
+     * عند فتح الصفحة الرئيسية:
+     * إذا كانت هناك محاولة اختبار سابقة مقفلة،
+     * يمكننا منع العودة العادية للاختبار.
+     */
+
+    const examLocked = sessionStorage.getItem("murbahExamLocked");
+
+    if (examLocked === "true") {
+
+        const button = document.querySelector(".start-btn");
+
+        button.textContent = "الاختبار مقفل";
+
+        button.style.pointerEvents = "none";
+        button.style.opacity = "0.5";
+        button.style.cursor = "not-allowed";
+
+    }
+
+</script>
+
+</body>
+</html>

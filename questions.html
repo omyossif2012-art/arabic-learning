@@ -1,1 +1,1382 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>اختبار اللغة العربية</title>
+
+    <style>
+        @font-face {
+            font-family: "Sakkal Majalla";
+            src: local("Sakkal Majalla");
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Sakkal Majalla", Tahoma, sans-serif;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(198,166,91,.14), transparent 25%),
+                radial-gradient(circle at 90% 90%, rgba(122,40,55,.16), transparent 28%),
+                linear-gradient(135deg, #241815, #4b2528 55%, #201614);
+            color: #fff;
+            padding-bottom: 40px;
+        }
+
+        /* =========================
+           الهيدر
+        ========================= */
+
+        header {
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(240,217,149,.25);
+            background: rgba(20,12,10,.45);
+            backdrop-filter: blur(10px);
+        }
+
+        .school-name {
+            color: #f0d995;
+            font-size: 24px;
+        }
+
+        .motto {
+            color: #eadfd4;
+            font-size: 18px;
+        }
+
+        /* =========================
+           الحاوية
+        ========================= */
+
+        .container {
+            width: min(900px, 94%);
+            margin: 35px auto;
+        }
+
+        .exam-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .exam-header .symbol {
+            color: #f0d995;
+            font-size: 28px;
+            letter-spacing: 8px;
+            margin-bottom: 8px;
+        }
+
+        .exam-header h1 {
+            color: #f0d995;
+            font-size: clamp(35px, 6vw, 55px);
+            font-weight: normal;
+        }
+
+        .exam-header p {
+            font-size: 20px;
+            color: #e7dbcf;
+            margin-top: 5px;
+        }
+
+        /* =========================
+           شريط التقدم
+        ========================= */
+
+        .progress-area {
+            margin-bottom: 25px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            color: #eadfd4;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 9px;
+            background: rgba(255,255,255,.12);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 10%;
+            height: 100%;
+            background: linear-gradient(90deg, #c6a65b, #f0d995);
+            border-radius: 20px;
+            transition: width .4s ease;
+        }
+
+        /* =========================
+           بطاقة السؤال
+        ========================= */
+
+        .question-card {
+            display: none;
+            padding: 35px;
+            border-radius: 25px;
+            border: 1px solid rgba(240,217,149,.3);
+            background: rgba(255,255,255,.06);
+            box-shadow: 0 20px 55px rgba(0,0,0,.32);
+            backdrop-filter: blur(12px);
+            animation: fadeIn .4s ease;
+        }
+
+        .question-card.active {
+            display: block;
+        }
+
+        .question-number {
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 30px;
+            border: 1px solid rgba(240,217,149,.4);
+            color: #f0d995;
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+
+        .question-text {
+            font-size: clamp(24px, 4vw, 31px);
+            line-height: 1.6;
+            color: #fff;
+            margin-bottom: 25px;
+        }
+
+        /* =========================
+           الاختيارات
+        ========================= */
+
+        .options {
+            display: grid;
+            gap: 13px;
+        }
+
+        .option {
+            position: relative;
+        }
+
+        .option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .option label {
+            display: block;
+            padding: 15px 20px;
+            border: 1px solid rgba(255,255,255,.18);
+            border-radius: 14px;
+            background: rgba(0,0,0,.14);
+            color: #eee5dc;
+            font-size: 21px;
+            cursor: pointer;
+            transition: all .25s ease;
+        }
+
+        .option label:hover {
+            border-color: #c6a65b;
+            background: rgba(198,166,91,.09);
+            transform: translateX(-3px);
+        }
+
+        .option input:checked + label {
+            border-color: #f0d995;
+            background: rgba(198,166,91,.16);
+            color: #fff;
+            box-shadow: inset 0 0 0 1px rgba(240,217,149,.2);
+        }
+
+        /* =========================
+           أزرار التنقل
+        ========================= */
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .nav-btn {
+            min-width: 150px;
+            padding: 13px 25px;
+            border-radius: 40px;
+            border: 1px solid #c6a65b;
+            background: transparent;
+            color: #f0d995;
+            font-family: inherit;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all .25s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(198,166,91,.13);
+        }
+
+        .next-btn,
+        .submit-btn {
+            background: linear-gradient(135deg, #c6a65b, #e4ca80);
+            color: #2b1b17;
+        }
+
+        .next-btn:hover,
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .prev-btn {
+            opacity: .7;
+        }
+
+        /* =========================
+           النتيجة
+        ========================= */
+
+        #result {
+            display: none;
+            text-align: center;
+            padding: 45px 25px;
+            border-radius: 25px;
+            border: 1px solid rgba(240,217,149,.35);
+            background: rgba(255,255,255,.06);
+            box-shadow: 0 20px 55px rgba(0,0,0,.3);
+        }
+
+        #result .result-symbol {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        #result h2 {
+            color: #f0d995;
+            font-size: 40px;
+            font-weight: normal;
+        }
+
+        #result p {
+            font-size: 23px;
+            color: #eee3d8;
+            margin: 10px 0;
+        }
+
+        .score {
+            font-size: 55px;
+            color: #fff;
+            margin: 15px 0;
+        }
+
+        .restart-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 30px;
+            border-radius: 40px;
+            background: transparent;
+            border: 1px solid #c6a65b;
+            color: #f0d995;
+            font-family: inherit;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           تنبيه
+        ========================= */
+
+        .warning {
+            display: none;
+            margin-top: 18px;
+            padding: 12px 18px;
+            border-radius: 10px;
+            background: rgba(122,40,55,.28);
+            border: 1px solid rgba(240,217,149,.2);
+            color: #f5e7dc;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        /* =========================
+           الفوتر
+        ========================= */
+
+        footer {
+            text-align: center;
+            color: #cfc1b3;
+            font-size: 16px;
+            margin-top: 30px;
+        }
+
+        /* =========================
+           الحركة
+        ========================= */
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           الجوال
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 15px 20px;
+            }
+
+            .school-name {
+                font-size: 20px;
+            }
+
+            .motto {
+                display: none;
+            }
+
+            .container {
+                width: 94%;
+                margin-top: 25px;
+            }
+
+            .question-card {
+                padding: 25px 18px;
+            }
+
+            .question-text {
+                font-size: 24px;
+            }
+
+            .option label {
+                font-size: 19px;
+            }
+
+            .navigation {
+                flex-direction: column-reverse;
+            }
+
+            .nav-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="school-name">
+        مدرسة مربح الحلقة الثانية بنات
+    </div>
+
+    <div class="motto">
+        بِالْمِيثَاقِ نَبْلُغُ الْآفَاقَ
+    </div>
+
+</header>
+
+
+<div class="container">
+
+    <div class="exam-header">
+
+        <div class="symbol">
+            ✦ ✧ ✦
+        </div>
+
+        <h1>
+            اختبار اللغة العربية
+        </h1>
+
+        <p>
+            قراءة وفهم وتحليل عناصر القصة
+        </p>
+
+    </div>
+
+
+    <!-- شريط التقدم -->
+
+    <div class="progress-area">
+
+        <div class="progress-info">
+
+            <span id="progressText">
+                السؤال 1 من 10
+            </span>
+
+            <span id="progressPercent">
+                10%
+            </span>
+
+        </div>
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="progressFill">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         السؤال الأول
+    ========================== -->
+
+    <div class="question-card active">
+
+        <span class="question-number">
+            السؤال الأول
+        </span>
+
+        <h2 class="question-text">
+            ما المقصود بعنصر الشخصيات في القصة؟
+        </h2>
+
+        <div class="options">
+
+            <div class="option">
+                <input type="radio" name="q1" id="q1a" value="a">
+                <label for="q1a">
+                    الأشخاص أو الكائنات التي تشارك في أحداث القصة
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q1" id="q1b" value="b">
+                <label for="q1b">
+                    المكان الذي تقع فيه الأحداث
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q1" id="q1c" value="c">
+                <label for="q1c">
+                    الزمن الذي وقعت فيه الأحداث
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q1" id="q1d" value="d">
+                <label for="q1d">
+                    المشكلة التي تواجه الشخصية
+                </label>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         السؤال الثاني
+    ========================== -->
+
+    <div class="question-card">
+
+        <span class="question-number">
+            السؤال الثاني
+        </span>
+
+        <h2 class="question-text">
+            ما العنصر الذي يحدد المكان الذي تجري فيه أحداث القصة؟
+        </h2>
+
+        <div class="options">
+
+            <div class="option">
+                <input type="radio" name="q2" id="q2a" value="a">
+                <label for="q2a">الشخصيات</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q2" id="q2b" value="b">
+                <label for="q2b">المكان</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q2" id="q2c" value="c">
+                <label for="q2c">الحل</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q2" id="q2d" value="d">
+                <label for="q2d">العقدة</label>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         السؤال الثالث
+    ========================== -->
+
+    <div class="question-card">
+
+        <span class="question-number">
+            السؤال الثالث
+        </span>
+
+        <h2 class="question-text">
+            ما المقصود بالزمان في القصة؟
+        </h2>
+
+        <div class="options">
+
+            <div class="option">
+                <input type="radio" name="q3" id="q3a" value="a">
+                <label for="q3a">
+                    الشخص الذي يروي القصة
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q3" id="q3b" value="b">
+                <label for="q3b">
+                    المكان الذي تقع فيه الأحداث
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q3" id="q3c" value="c">
+                <label for="q3c">
+                    الوقت أو الفترة التي تقع فيها الأحداث
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q3" id="q3d" value="d">
+                <label for="q3d">
+                    نهاية القصة
+                </label>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         السؤال الرابع
+    ========================== -->
+
+    <div class="question-card">
+
+        <span class="question-number">
+            السؤال الرابع
+        </span>
+
+        <h2 class="question-text">
+            ما المقصود بالعقدة أو المشكلة في القصة؟
+        </h2>
+
+        <div class="options">
+
+            <div class="option">
+                <input type="radio" name="q4" id="q4a" value="a">
+                <label for="q4a">
+                    المشكلة أو الصراع الذي تواجهه الشخصية
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q4" id="q4b" value="b">
+                <label for="q4b">
+                    وصف المكان
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q4" id="q4c" value="c">
+                <label for="q4c">
+                    عنوان القصة
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q4" id="q4d" value="d">
+                <label for="q4d">
+                    الشخصيات الثانوية فقط
+                </label>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         السؤال الخامس
+    ========================== -->
+
+    <div class="question-card">
+
+        <span class="question-number">
+            السؤال الخامس
+        </span>
+
+        <h2 class="question-text">
+            أي العناصر الآتية يُعد من عناصر القصة؟
+        </h2>
+
+        <div class="options">
+
+            <div class="option">
+                <input type="radio" name="q5" id="q5a" value="a">
+                <label for="q5a">
+                    الشخصيات
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q5" id="q5b" value="b">
+                <label for="q5b">
+                    المكان
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q5" id="q5c" value="c">
+                <label for="q5c">
+                    الزمان
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q5" id="q5d" value="d">
+                <label for="q5d">
+                    جميع ما سبق
+                </label>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         السؤال السادس
+    ========================== -->
+
+    <div class="question-card">
+
+        <span class="question-number">
+            السؤال السادس
+        </span>
+
+        <h2 class="question-text">
+            ماذا نسمي تسلسل الأحداث في القصة من البداية إلى النهاية؟
+        </h2>
+
+        <div class="options">
+
+            <div class="option">
+                <input type="radio" name="q6" id="q6a" value="a">
+                <label for="q6a">الحبكة</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q6" id="q6b" value="b">
+                <label for="q6b">المكان</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q6" id="q6c" value="c">
+                <label for="q6c">الشخصية</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q6" id="q6d" value="d">
+                <label for="q6d">الزمان</label>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         السؤال السابع
+    ========================== -->
+
+    <div class="question-card">
+
+        <span class="question-number">
+            السؤال السابع
+        </span>
+
+        <h2 class="question-text">
+            ما الفكرة الرئيسة في القصة؟
+        </h2>
+
+        <div class="options">
+
+            <div class="option">
+                <input type="radio" name="q7" id="q7a" value="a">
+                <label for="q7a">
+                    الفكرة أو الرسالة الأساسية التي تدور حولها القصة
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q7" id="q7b" value="b">
+                <label for="q7b">
+                    اسم إحدى الشخصيات
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q7" id="q7c" value="c">
+                <label for="q7c">
+                    مكان وقوع الأحداث فقط
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q7" id="q7d" value="d">
+                <label for="q7d">
+                    زمن القصة فقط
+                </label>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         السؤال الثامن
+    ========================== -->
+
+    <div class="question-card">
+
+        <span class="question-number">
+            السؤال الثامن
+        </span>
+
+        <h2 class="question-text">
+            لماذا نحلل عناصر القصة؟
+        </h2>
+
+        <div class="options">
+
+            <div class="option">
+                <input type="radio" name="q8" id="q8a" value="a">
+                <label for="q8a">
+                    لفهم أحداث القصة وشخصياتها وأفكارها بصورة أعمق
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q8" id="q8b" value="b">
+                <label for="q8b">
+                    لمعرفة عدد كلمات القصة فقط
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q8" id="q8c" value="c">
+                <label for="q8c">
+                    لحفظ القصة دون فهمها
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q8" id="q8d" value="d">
+                <label for="q8d">
+                    لتغيير أحداث القصة
+                </label>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         السؤال التاسع
+    ========================== -->
+
+    <div class="question-card">
+
+        <span class="question-number">
+            السؤال التاسع
+        </span>
+
+        <h2 class="question-text">
+            ما العنصر الذي يساعد القارئ على معرفة من يقوم بالأحداث؟
+        </h2>
+
+        <div class="options">
+
+            <div class="option">
+                <input type="radio" name="q9" id="q9a" value="a">
+                <label for="q9a">الشخصيات</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q9" id="q9b" value="b">
+                <label for="q9b">المكان</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q9" id="q9c" value="c">
+                <label for="q9c">الزمان</label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q9" id="q9d" value="d">
+                <label for="q9d">الفكرة الرئيسة</label>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         السؤال العاشر
+    ========================== -->
+
+    <div class="question-card">
+
+        <span class="question-number">
+            السؤال العاشر
+        </span>
+
+        <h2 class="question-text">
+            ما الهدف الأساسي من قراءة القصة وتحليلها؟
+        </h2>
+
+        <div class="options">
+
+            <div class="option">
+                <input type="radio" name="q10" id="q10a" value="a">
+                <label for="q10a">
+                    فهم النص واستخلاص أفكاره وقيمه وتحليل أحداثه
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q10" id="q10b" value="b">
+                <label for="q10b">
+                    قراءة الكلمات بسرعة فقط
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q10" id="q10c" value="c">
+                <label for="q10c">
+                    حفظ النص دون فهم
+                </label>
+            </div>
+
+            <div class="option">
+                <input type="radio" name="q10" id="q10d" value="d">
+                <label for="q10d">
+                    معرفة عدد فقرات النص فقط
+                </label>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- التنبيه -->
+
+    <div
+        class="warning"
+        id="warning">
+        يرجى اختيار إجابة قبل الانتقال إلى السؤال التالي.
+    </div>
+
+
+    <!-- أزرار التنقل -->
+
+    <div
+        class="navigation"
+        id="navigation">
+
+        <button
+            class="nav-btn prev-btn"
+            id="prevBtn"
+            onclick="previousQuestion()">
+            → السابق
+        </button>
+
+        <button
+            class="nav-btn next-btn"
+            id="nextBtn"
+            onclick="nextQuestion()">
+            التالي ←
+        </button>
+
+    </div>
+
+
+    <!-- النتيجة -->
+
+    <div id="result">
+
+        <div class="result-symbol">
+            🏆
+        </div>
+
+        <h2>
+            أحسنتِ!
+        </h2>
+
+        <p>
+            لقد أكملتِ الاختبار بنجاح.
+        </p>
+
+        <div class="score" id="score">
+            0 / 10
+        </div>
+
+        <p id="resultMessage">
+            تمنياتنا لكِ بالمزيد من التميز.
+        </p>
+
+    </div>
+
+</div>
+
+
+<footer>
+    منصة اللغة العربية — مدرسة مربح الحلقة الثانية بنات
+</footer>
+
+
+<script>
+
+    /* =====================================================
+       إعداد الاختبار
+    ===================================================== */
+
+    const questions = document.querySelectorAll(".question-card");
+
+    const correctAnswers = [
+        "a", // 1
+        "b", // 2
+        "c", // 3
+        "a", // 4
+        "d", // 5
+        "a", // 6
+        "a", // 7
+        "a", // 8
+        "a", // 9
+        "a"  // 10
+    ];
+
+    let currentQuestion = 0;
+    let examFinished = false;
+
+    const progressFill =
+        document.getElementById("progressFill");
+
+    const progressText =
+        document.getElementById("progressText");
+
+    const progressPercent =
+        document.getElementById("progressPercent");
+
+    const prevBtn =
+        document.getElementById("prevBtn");
+
+    const nextBtn =
+        document.getElementById("nextBtn");
+
+    const warning =
+        document.getElementById("warning");
+
+    const navigation =
+        document.getElementById("navigation");
+
+    const result =
+        document.getElementById("result");
+
+
+    /* =====================================================
+       منع فتح محاولة جديدة إذا كانت المحاولة مقفلة
+    ===================================================== */
+
+    if (
+        sessionStorage.getItem("murbahExamLocked") === "true"
+    ) {
+
+        window.location.replace("locked.html");
+
+    }
+
+
+    /* =====================================================
+       عرض السؤال الحالي
+    ===================================================== */
+
+    function showQuestion(index) {
+
+        questions.forEach(function(question, i) {
+
+            question.classList.toggle(
+                "active",
+                i === index
+            );
+
+        });
+
+        currentQuestion = index;
+
+        const percentage =
+            Math.round(
+                ((index + 1) / questions.length) * 100
+            );
+
+        progressFill.style.width =
+            percentage + "%";
+
+        progressText.textContent =
+            "السؤال " +
+            (index + 1) +
+            " من " +
+            questions.length;
+
+        progressPercent.textContent =
+            percentage + "%";
+
+        warning.style.display = "none";
+
+        prevBtn.style.visibility =
+            index === 0 ? "hidden" : "visible";
+
+        if (index === questions.length - 1) {
+
+            nextBtn.textContent =
+                "إنهاء الاختبار ✓";
+
+            nextBtn.classList.add("submit-btn");
+
+        } else {
+
+            nextBtn.textContent =
+                "التالي ←";
+
+            nextBtn.classList.remove("submit-btn");
+
+        }
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    /* =====================================================
+       التحقق من الإجابة
+    ===================================================== */
+
+    function getSelectedAnswer(index) {
+
+        const question =
+            questions[index];
+
+        const selected =
+            question.querySelector(
+                'input[type="radio"]:checked'
+            );
+
+        return selected
+            ? selected.value
+            : null;
+
+    }
+
+
+    /* =====================================================
+       السؤال التالي
+    ===================================================== */
+
+    function nextQuestion() {
+
+        const selected =
+            getSelectedAnswer(currentQuestion);
+
+        if (!selected) {
+
+            warning.style.display = "block";
+
+            return;
+
+        }
+
+        if (
+            currentQuestion <
+            questions.length - 1
+        ) {
+
+            showQuestion(currentQuestion + 1);
+
+        } else {
+
+            finishExam();
+
+        }
+
+    }
+
+
+    /* =====================================================
+       السؤال السابق
+    ===================================================== */
+
+    function previousQuestion() {
+
+        if (currentQuestion > 0) {
+
+            showQuestion(currentQuestion - 1);
+
+        }
+
+    }
+
+
+    /* =====================================================
+       إنهاء الاختبار وحساب النتيجة
+    ===================================================== */
+
+    function finishExam() {
+
+        let score = 0;
+
+        correctAnswers.forEach(
+            function(correct, index) {
+
+                const answer =
+                    getSelectedAnswer(index);
+
+                if (answer === correct) {
+                    score++;
+                }
+
+            }
+        );
+
+        examFinished = true;
+
+        /*
+         * عند الإكمال الطبيعي لا نقفل الاختبار.
+         */
+        sessionStorage.removeItem(
+            "murbahExamLocked"
+        );
+
+        document.querySelector(
+            ".exam-header"
+        ).style.display = "none";
+
+        document.querySelector(
+            ".progress-area"
+        ).style.display = "none";
+
+        questions.forEach(
+            function(question) {
+                question.style.display = "none";
+            }
+        );
+
+        navigation.style.display = "none";
+
+        warning.style.display = "none";
+
+        result.style.display = "block";
+
+        document.getElementById(
+            "score"
+        ).textContent =
+            score + " / " + questions.length;
+
+        let message = "";
+
+        const percentage =
+            (score / questions.length) * 100;
+
+        if (percentage === 100) {
+
+            message =
+                "رائع جدًا! إجاباتك كلها صحيحة، وهذا يدل على فهم متميز. 🌟";
+
+        } else if (percentage >= 80) {
+
+            message =
+                "أحسنتِ! مستوى رائع، واصلي التقدم والتميّز. 🌷";
+
+        } else if (percentage >= 60) {
+
+            message =
+                "عمل جميل، راجعي بعض العناصر وستصلين إلى مستوى أفضل. 📖";
+
+        } else {
+
+            message =
+                "بداية طيبة، أعيدي قراءة الدرس وحاولي مرة أخرى. 💛";
+
+        }
+
+        document.getElementById(
+            "resultMessage"
+        ).textContent = message;
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    /* =====================================================
+       حماية الاختبار من مغادرة الصفحة
+    ===================================================== */
+
+    function lockExam(reason) {
+
+        if (examFinished) {
+            return;
+        }
+
+        /*
+         * لا ننفذ الأمر أكثر من مرة.
+         */
+        if (
+            sessionStorage.getItem(
+                "murbahExamLocked"
+            ) === "true"
+        ) {
+            return;
+        }
+
+        sessionStorage.setItem(
+            "murbahExamLocked",
+            "true"
+        );
+
+        sessionStorage.setItem(
+            "murbahLockReason",
+            reason
+        );
+
+        window.location.replace(
+            "locked.html"
+        );
+
+    }
+
+
+    /* =====================================================
+       اكتشاف الانتقال إلى تبويب آخر
+    ===================================================== */
+
+    document.addEventListener(
+        "visibilitychange",
+        function() {
+
+            if (
+                document.visibilityState === "hidden" &&
+                !examFinished
+            ) {
+
+                lockExam(
+                    "تمت مغادرة صفحة الاختبار."
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       زر الرجوع في المتصفح
+    ===================================================== */
+
+    history.pushState(
+        null,
+        "",
+        location.href
+    );
+
+    window.addEventListener(
+        "popstate",
+        function() {
+
+            if (!examFinished) {
+
+                lockExam(
+                    "تم استخدام زر الرجوع."
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       تحذير المتصفح عند محاولة إغلاق الصفحة
+    ===================================================== */
+
+    window.addEventListener(
+        "beforeunload",
+        function(event) {
+
+            if (!examFinished) {
+
+                event.preventDefault();
+
+                event.returnValue = "";
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       بدء الاختبار
+    ===================================================== */
+
+    showQuestion(0);
+
+</script>
+
+</body>
+</html>

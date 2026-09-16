@@ -2,615 +2,508 @@
 <html lang="ar" dir="rtl">
 
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
+<title>تم إيقاف الاختبار</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<style>
 
-    <title>تم إيقاف الاختبار</title>
+@font-face {
+    font-family: "Sakkal Majalla";
+    src: local("Sakkal Majalla");
+}
 
-    <style>
+* {
+    box-sizing: border-box;
+}
 
-        @font-face {
-            font-family: "Sakkal Majalla";
-            src: local("Sakkal Majalla");
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    font-family: "Sakkal Majalla", Tahoma, sans-serif;
 
-        body {
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(198,166,91,.14),
+            transparent 35%
+        ),
 
-            min-height: 100vh;
+        radial-gradient(
+            circle at bottom left,
+            rgba(122,40,55,.20),
+            transparent 35%
+        ),
 
-            font-family:
-                "Sakkal Majalla",
-                Tahoma,
-                sans-serif;
+        linear-gradient(
+            135deg,
+            #241814,
+            #3b201e 55%,
+            #241814
+        );
 
-            background:
-                radial-gradient(
-                    circle at 15% 15%,
-                    rgba(198,166,91,.15),
-                    transparent 25%
-                ),
-                radial-gradient(
-                    circle at 85% 85%,
-                    rgba(122,40,55,.18),
-                    transparent 30%
-                ),
-                linear-gradient(
-                    135deg,
-                    #241815,
-                    #4b2528 55%,
-                    #201614
-                );
+    color: white;
 
-            color: white;
+    display: flex;
 
-            display: flex;
-            flex-direction: column;
+    align-items: center;
 
-        }
+    justify-content: center;
 
+    padding: 25px;
+}
 
-        /* =========================
-           الرأس
-        ========================= */
+.container {
+    width: 100%;
+    max-width: 650px;
+}
 
-        header {
+.header {
+    text-align: center;
+    margin-bottom: 22px;
+}
 
-            padding: 20px 7%;
+.header h1 {
+    margin: 0;
 
-            display: flex;
+    color: #f0d995;
 
-            justify-content:
-                space-between;
+    font-size: 36px;
+}
 
-            align-items: center;
+.header p {
+    margin: 4px 0;
 
-            border-bottom:
-                1px solid
-                rgba(240,217,149,.25);
+    font-size: 21px;
+}
 
-            background:
-                rgba(20,12,10,.4);
+.motto {
+    color: #d8c89c;
 
-            backdrop-filter:
-                blur(10px);
+    font-size: 18px !important;
+}
 
-        }
+.card {
 
+    background: rgba(250,248,243,.98);
 
-        .school {
+    color: #2b1b17;
 
-            color: #f0d995;
+    border-radius: 24px;
 
-            font-size: 25px;
+    padding: 35px 30px;
 
-        }
+    text-align: center;
 
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.35);
 
-        .motto {
+    border: 1px solid
+        rgba(240,217,149,.55);
+}
 
-            color: #e8ddd1;
+/* أيقونة القفل */
 
-            font-size: 18px;
+.lock-icon {
 
-        }
+    width: 85px;
+    height: 85px;
 
+    margin: 0 auto 18px;
 
-        /* =========================
-           المحتوى
-        ========================= */
+    border-radius: 50%;
 
-        main {
+    background: #f5e7df;
 
-            flex: 1;
+    display: flex;
 
-            display: flex;
+    align-items: center;
 
-            align-items: center;
+    justify-content: center;
 
-            justify-content: center;
+    font-size: 43px;
 
-            padding: 30px 20px;
+}
 
-        }
+/* العنوان */
 
+.card h2 {
 
-        .lock-card {
+    color: #7a2837;
 
-            width: min(720px, 94%);
+    font-size: 36px;
 
-            text-align: center;
+    margin: 5px 0 10px;
 
-            padding: 55px 35px;
+}
 
-            border-radius: 30px;
+/* الرسالة */
 
-            border:
-                1px solid
-                rgba(240,217,149,.35);
+.message {
 
-            background:
-                rgba(255,255,255,.055);
+    font-size: 22px;
 
-            box-shadow:
-                0 25px 70px
-                rgba(0,0,0,.4);
+    line-height: 1.7;
 
-            backdrop-filter:
-                blur(12px);
+    color: #4b352f;
 
-            animation:
-                appear 1s ease;
+    margin-bottom: 22px;
 
-        }
+}
 
+/* بيانات الطالبة */
 
-        /* =========================
-           رمز القفل
-        ========================= */
+.student-info {
 
-        .lock-icon {
+    background: #f6f0e5;
 
-            width: 110px;
+    border-radius: 15px;
 
-            height: 110px;
+    padding: 15px;
 
-            margin:
-                0 auto 25px;
+    margin: 20px 0;
 
-            border-radius: 50%;
+    border-right: 5px solid #c6a65b;
 
-            border:
-                1px solid
-                #c6a65b;
+}
 
-            display: flex;
+.student-info div {
 
-            align-items: center;
+    font-size: 20px;
 
-            justify-content: center;
+    margin: 5px 0;
 
-            font-size: 52px;
+}
 
-            background:
-                rgba(198,166,91,.08);
+.student-info strong {
 
-            box-shadow:
-                0 0 35px
-                rgba(198,166,91,.12);
+    color: #7a2837;
 
-        }
+}
 
+/* سبب الإيقاف */
 
-        /* =========================
-           العنوان
-        ========================= */
+.reason {
 
-        h1 {
+    background: #fbefef;
 
-            color: #f0d995;
+    color: #70232f;
 
-            font-size:
-                clamp(38px, 6vw, 55px);
+    border-radius: 12px;
 
-            font-weight: normal;
+    padding: 13px;
 
-            margin-bottom: 15px;
+    font-size: 19px;
 
-        }
+    margin-bottom: 20px;
 
+}
 
-        .subtitle {
+/* الأزرار */
 
-            font-size: 25px;
+.button {
 
-            color: white;
+    display: inline-block;
 
-            margin-bottom: 20px;
+    width: 100%;
 
-        }
+    padding: 14px 20px;
 
+    border-radius: 13px;
 
-        .message {
+    border: none;
 
-            font-size: 21px;
+    text-decoration: none;
 
-            line-height: 1.9;
+    font-family: inherit;
 
-            color: #e6dacf;
+    font-size: 22px;
 
-            max-width: 590px;
+    cursor: pointer;
 
-            margin: 0 auto 25px;
+    margin-top: 8px;
 
-        }
+}
 
+.home-button {
 
-        /* =========================
-           صندوق التنبيه
-        ========================= */
+    background:
+        linear-gradient(
+            135deg,
+            #7a2837,
+            #57202b
+        );
 
-        .notice {
+    color: white;
 
-            padding: 20px;
+}
 
-            border-right:
-                4px solid
-                #c6a65b;
+/* زر المعلمة */
 
-            background:
-                rgba(0,0,0,.18);
+.teacher-button {
 
-            border-radius: 12px;
+    background:
+        linear-gradient(
+            135deg,
+            #8a6b27,
+            #c6a65b
+        );
 
-            text-align: right;
+    color: white;
 
-            margin:
-                25px auto;
+    display: none;
 
-            max-width: 590px;
+}
 
-        }
+.footer {
 
+    text-align: center;
 
-        .notice-title {
+    color: #d8c89c;
 
-            color: #f0d995;
+    margin-top: 20px;
 
-            font-size: 22px;
+    font-size: 17px;
 
-            margin-bottom: 7px;
+}
 
-        }
+/* رابط المعلمة الصغير */
 
+.teacher-access {
 
-        .notice p {
+    margin-top: 22px;
 
-            color: #e8ddd3;
+    font-size: 15px;
 
-            font-size: 18px;
+    color: rgba(255,255,255,.35);
 
-            line-height: 1.7;
+    cursor: pointer;
 
-        }
+    user-select: none;
 
+}
 
-        /* =========================
-           زر العودة
-        ========================= */
+@media(max-width:600px) {
 
-        .home-btn {
+    .card {
+        padding: 28px 20px;
+    }
 
-            display: inline-flex;
+    .header h1 {
+        font-size: 30px;
+    }
 
-            align-items: center;
+    .card h2 {
+        font-size: 31px;
+    }
 
-            justify-content: center;
+    .message {
+        font-size: 20px;
+    }
 
-            gap: 10px;
+}
 
-            margin-top: 15px;
-
-            padding:
-                13px 32px;
-
-            border-radius: 40px;
-
-            border:
-                1px solid
-                #c6a65b;
-
-            background:
-                transparent;
-
-            color: #f0d995;
-
-            font-family: inherit;
-
-            font-size: 21px;
-
-            text-decoration: none;
-
-            transition:
-                all .3s ease;
-
-        }
-
-
-        .home-btn:hover {
-
-            background:
-                rgba(198,166,91,.12);
-
-            transform:
-                translateY(-2px);
-
-        }
-
-
-        /* =========================
-           التذييل
-        ========================= */
-
-        footer {
-
-            text-align: center;
-
-            padding: 20px;
-
-            color: #cfc1b3;
-
-            font-size: 16px;
-
-            border-top:
-                1px solid
-                rgba(240,217,149,.18);
-
-        }
-
-
-        footer strong {
-
-            color: #f0d995;
-
-            font-weight: normal;
-
-        }
-
-
-        /* =========================
-           الحركة
-        ========================= */
-
-        @keyframes appear {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(25px)
-                    scale(.98);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0)
-                    scale(1);
-
-            }
-
-        }
-
-
-        /* =========================
-           الجوال
-        ========================= */
-
-        @media (max-width: 600px) {
-
-            header {
-
-                padding:
-                    16px 20px;
-
-            }
-
-            .school {
-
-                font-size: 20px;
-
-            }
-
-            .motto {
-
-                display: none;
-
-            }
-
-            .lock-card {
-
-                padding:
-                    40px 20px;
-
-                border-radius: 22px;
-
-            }
-
-            .lock-icon {
-
-                width: 90px;
-
-                height: 90px;
-
-                font-size: 42px;
-
-            }
-
-            h1 {
-
-                font-size: 40px;
-
-            }
-
-            .subtitle {
-
-                font-size: 22px;
-
-            }
-
-            .message {
-
-                font-size: 19px;
-
-            }
-
-            .notice p {
-
-                font-size: 17px;
-
-            }
-
-            .home-btn {
-
-                width: 100%;
-
-            }
-
-        }
-
-    </style>
-
+</style>
 </head>
 
 
 <body>
 
+<div class="container">
 
-    <!-- =========================
-         الرأس
-    ========================== -->
+    <div class="header">
 
-    <header>
-
-        <div class="school">
-
-            مدرسة مربح الحلقة الثانية بنات
-
-        </div>
-
-        <div class="motto">
-
-            بِالْمِيثَاقِ نَبْلُغُ الْآفَاقَ
-
-        </div>
-
-    </header>
-
-
-
-    <!-- =========================
-         المحتوى
-    ========================== -->
-
-    <main>
-
-        <section class="lock-card">
-
-
-            <div class="lock-icon">
-
-                🔒
-
-            </div>
-
-
-            <h1>
-
-                تم إيقاف الاختبار
-
-            </h1>
-
-
-            <div class="subtitle">
-
-                تم إنهاء محاولة الاختبار الحالية
-
-            </div>
-
-
-            <p class="message">
-
-                تم رصد مغادرة صفحة الاختبار أثناء المحاولة،
-                ولذلك تم إيقاف الاختبار الحالي حفاظًا على
-                نزاهة التقييم.
-
-            </p>
-
-
-            <div class="notice">
-
-                <div class="notice-title">
-
-                    تنبيه
-
-                </div>
-
-                <p>
-
-                    لا يمكن استئناف المحاولة الحالية من هذا الجهاز
-                    بعد مغادرة صفحة الاختبار.
-
-                    يرجى التواصل مع المعلمة أو إدارة المدرسة
-                    في حال وجود مشكلة تقنية.
-
-                </p>
-
-            </div>
-
-
-            <a
-                href="index.html"
-                class="home-btn">
-
-                العودة إلى الصفحة الرئيسية
-
-                <span>←</span>
-
-            </a>
-
-
-        </section>
-
-    </main>
-
-
-
-    <!-- =========================
-         التذييل
-    ========================== -->
-
-    <footer>
-
-        <strong>
+        <h1>
             منصة اللغة العربية
-        </strong>
+        </h1>
 
-        — مدرسة مربح الحلقة الثانية بنات
+        <p>
+            مدرسة مربح الحلقة الثانية بنات
+        </p>
 
-    </footer>
+        <p class="motto">
+            بِالْمِيثَاقِ نَبْلُغُ الْآفَاقَ
+        </p>
 
-
-
-    <script>
-
-        /*
-         * لا نسمح بالعودة إلى الاختبار
-         * طالما أن المحاولة مقفلة.
-         */
-
-        sessionStorage.setItem(
-            "murbahExamLocked",
-            "true"
-        );
+    </div>
 
 
-        /*
-         * منع العودة إلى صفحة الاختبار
-         * بزر الرجوع.
-         */
+    <div class="card">
+
+        <div class="lock-icon">
+            🔒
+        </div>
+
+
+        <h2>
+            تم إيقاف الاختبار
+        </h2>
+
+
+        <div class="message">
+
+            تم إنهاء محاولة الاختبار الحالية.
+
+            <br>
+
+            لا يمكن استكمال هذه المحاولة.
+
+        </div>
+
+
+        <!-- بيانات الطالبة -->
+
+        <div class="student-info">
+
+            <div>
+                <strong>الطالبة:</strong>
+                <span id="studentName">—</span>
+            </div>
+
+            <div>
+                <strong>الصف:</strong>
+                <span id="studentGrade">—</span>
+            </div>
+
+            <div>
+                <strong>الشعبة:</strong>
+                <span id="studentSection">—</span>
+            </div>
+
+        </div>
+
+
+        <!-- سبب الإيقاف -->
+
+        <div class="reason">
+
+            <strong>
+                سبب الإيقاف:
+            </strong>
+
+            <br>
+
+            <span id="lockReason">
+                تم رصد مغادرة صفحة الاختبار أثناء المحاولة.
+            </span>
+
+        </div>
+
+
+        <div class="message">
+
+            إذا كان الإيقاف ناتجًا عن مشكلة تقنية،
+            يرجى التواصل مع المعلمة.
+
+        </div>
+
+
+        <a
+            href="index.html"
+            class="button home-button">
+
+            العودة إلى الصفحة الرئيسية
+
+        </a>
+
+
+        <!-- زر إعادة ضبط المعلمة -->
+
+        <button
+            id="teacherReset"
+            class="button teacher-button"
+            onclick="resetExam()">
+
+            🔑 إعادة ضبط الاختبار
+
+        </button>
+
+
+    </div>
+
+
+    <div class="footer">
+
+        مدرسة مربح الحلقة الثانية بنات
+
+        <br>
+
+        بِالْمِيثَاقِ نَبْلُغُ الْآفَاقََ
+
+    </div>
+
+
+    <!-- وصول المعلمة -->
+
+    <div
+        class="teacher-access"
+        onclick="teacherAccess()">
+
+        وصول المعلمة
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   قراءة بيانات الطالبة
+========================================= */
+
+const studentName =
+    sessionStorage.getItem("studentName");
+
+const studentGrade =
+    sessionStorage.getItem("studentGrade");
+
+const studentSection =
+    sessionStorage.getItem("studentSection");
+
+const lockReason =
+    sessionStorage.getItem("lockReason");
+
+
+document.getElementById(
+    "studentName"
+).textContent =
+    studentName || "غير متوفر";
+
+
+document.getElementById(
+    "studentGrade"
+).textContent =
+    studentGrade || "الصف السابع";
+
+
+document.getElementById(
+    "studentSection"
+).textContent =
+    studentSection || "غير محددة";
+
+
+if (lockReason) {
+
+    document.getElementById(
+        "lockReason"
+    ).textContent =
+        lockReason;
+
+}
+
+
+/* =========================================
+   منع الرجوع إلى الاختبار
+========================================= */
+
+history.pushState(null, "", location.href);
+
+window.addEventListener(
+    "popstate",
+    function() {
 
         history.pushState(
             null,
@@ -618,23 +511,82 @@
             location.href
         );
 
+    }
+);
 
-        window.addEventListener(
-            "popstate",
-            function() {
 
-                history.pushState(
-                    null,
-                    "",
-                    location.href
-                );
+/* =========================================
+   وصول المعلمة
+========================================= */
 
-            }
+function teacherAccess() {
+
+    const password =
+        prompt(
+            "أدخلي رمز المعلمة لإعادة ضبط الاختبار:"
         );
 
-    </script>
 
+    /*
+       غيّري الرمز إلى الرمز الذي تريدينه.
+    */
+
+    if (password === "Murbah2026") {
+
+        document.getElementById(
+            "teacherReset"
+        ).style.display =
+            "block";
+
+        alert(
+            "تم التحقق. يمكنك الآن إعادة ضبط الاختبار."
+        );
+
+    } else {
+
+        alert(
+            "الرمز غير صحيح."
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   إعادة ضبط الاختبار
+========================================= */
+
+function resetExam() {
+
+    sessionStorage.removeItem(
+        "murbahExamLocked"
+    );
+
+    sessionStorage.removeItem(
+        "lockReason"
+    );
+
+    sessionStorage.removeItem(
+        "userAnswers"
+    );
+
+    sessionStorage.removeItem(
+        "examCompleted"
+    );
+
+
+    alert(
+        "تمت إعادة ضبط الاختبار بنجاح."
+    );
+
+
+    window.location.href =
+        "student.html";
+
+}
+
+</script>
 
 </body>
-
 </html>
